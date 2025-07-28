@@ -363,7 +363,8 @@ export async function start(): Promise<void> {
     const host = process.env.HOST
     const port = parseInt(process.env.PORT || '', 10) || 3000
     const server = http.createServer(serverApp.app)
-
+    server.timeout = 300000 // 5 minutos
+    
     await serverApp.initDatabase()
     await serverApp.config()
 
